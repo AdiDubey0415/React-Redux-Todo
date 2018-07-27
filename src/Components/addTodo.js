@@ -74,7 +74,7 @@ class AddTodo extends Component {
                         One
                     </option>
                     <option>
-                        Two 
+                        Tw
                     </option>
                 </select>
                 <button type="submit">Submit</button>
