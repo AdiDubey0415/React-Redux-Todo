@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import { currentTodo } from './reducer_currentTodo';
-import { todoList } from './reducer_todoList';
+import { todoState } from './reducer_currentTodo';
 
 const rootReducers = combineReducers({
-    currentTodo,
-    todoList
+    todoState
 });
 
 export default rootReducers;
@@ -14,6 +12,6 @@ export default rootReducers;
 State:
 
 1. Global state for add todo inputs.
-2. list of todos.
+2. List of todos.
 
 */

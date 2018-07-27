@@ -1,4 +1,4 @@
-export function todoList(state = [3,2,1], action) {
-    console.log(action);
+export function todoList(state = null, action) {
+    // console.log(state);
     return state;
 }

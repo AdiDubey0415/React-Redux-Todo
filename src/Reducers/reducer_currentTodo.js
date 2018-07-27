@@ -1,5 +1,4 @@
-export function currentTodo(state = {}, action) {
-    console.log(action);
+export function todoState(state = {}, action) {
     switch(action.type) {
         case 'ADD_TODO':
         let newVal;
@@ -8,13 +7,12 @@ export function currentTodo(state = {}, action) {
         switch(action.payload.type) {
             case 'todoVal':
             newState = {...state};
-            newState.todoVal = newVal;
+            newState.currentTodo.todoVal = newVal;
             return newState;
 
             case 'deadLine':
             newState = {...state};
-            newState.deadLine = newVal;
-            console.log(newState);
+            newState.currentTodo.deadLine = newVal;
             return newState;
 
             default:
@@ -22,13 +20,16 @@ export function currentTodo(state = {}, action) {
         }
         break;
 
-        case 'RESET_FORM_FIELDS':
-        newState = {
+        case 'SUBMIT_FORM':
+        newState = {...state};
+        newState.todoList.push(newState.currentTodo);
+        newState.currentTodo = {
             todoVal: '',
             deadLine: '',
             completed: false,
-            position: '-1'
+            position: '-1',
         }
+        console.log(newState);
         return newState;
 
         default:
@@ -36,9 +37,12 @@ export function currentTodo(state = {}, action) {
     }
 
     return ({
-        todoVal: '',
-        deadLine: '',
-        completed: false,
-        position: '-1'
+        currentTodo : {
+            todoVal: '',
+            deadLine: '',
+            completed: false,
+            position: '-1',
+        },
+        todoList: []
     });
 }

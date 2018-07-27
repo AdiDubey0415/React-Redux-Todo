@@ -1,5 +1,5 @@
 export function changeCurrentTodo(fieldName, val) {
-    console.log(val, fieldName);
+    // console.log(val, fieldName);
     return ({
         type: 'ADD_TODO',
         payload: {
@@ -9,9 +9,9 @@ export function changeCurrentTodo(fieldName, val) {
     });
 }
 
-export function resetFormFields() {
-    console.log('1234');
+export function submitForm() {
+    // console.log('1234');
     return ({
-        type: 'RESET_FORM_FIELDS'
+        type: 'SUBMIT_FORM'
     });
 }
