@@ -1,14 +1,11 @@
 import { combineReducers } from 'redux';
-import { AddTodoToList } from './reducer_addTodo';
-import { ActiveTodo } from './reducer_active_todo';
+import { currentTodo } from './reducer_currentTodo';
+import { todoList } from './reducer_todoList';
 
 const rootReducers = combineReducers({
-    addTodo: AddTodoToList,
-    ActiveTodo
-    // activeTodo
+    currentTodo,
+    todoList
 });
-
-// console.log(111);
 
 export default rootReducers;
 

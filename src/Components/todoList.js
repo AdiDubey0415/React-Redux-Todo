@@ -1,43 +1,21 @@
 import React, { Component } from 'react';
-import AddTodoToList from '../Reducers/reducer_addTodo';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { sendTodo } from '../ActionCreators/actions';
+// import { bindActionCreators } from 'redux';
 
 class TodoList extends Component {
-
-    sendClickedTodo = (index, todo) => {
-        // console.log(todo, index);
-        // console.log(this.props);
-        this.props.sendTodo(todo);
-    }
-
-    renderFunction = () => {
-        // console.log(this.props);
-        if(this.props.todoList) {
-            return this.props.todoList.map((todo, index) => <li key={index} onClick={() => this.props.sendTodo(todo)}>{todo.todoVal}</li>);
-        }
-    }
 
     render() {
         return (
             <div>
                 <ul>
-                {  this.renderFunction()  }
                 </ul>
             </div>
         );
     }
 }
 
-const mapStateToProps = (state) => {
-    return ({
-        todoList: state.addTodo
-    });
-}
+// The props passed here are passed to provide data, they make the data available in the state as props to this component.
 
-const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({ sendTodo }, dispatch);
-}
+// The props passed here are passed as event handlers, or action handlers, or action creators to respond to a user action or event.
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect()(TodoList);
