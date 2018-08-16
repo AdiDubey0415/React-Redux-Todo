@@ -1,21 +1,93 @@
 import React, { Component } from 'react';
 import './App.css';
-import AddTodo from './Components/addTodo';
-import TodoList from './Components/todoList';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import AddTodo from './Containers/AddTodo';
+import TodoList from './Containers/TodoList';
+import SearchTodo from './Containers/SearchTodo';
+import { changeCurrentValue, addTodoToTodos, editTodo, deleteTodo, toggleTodo, searchTodo, searchTodoInList, searchByDeadline, searchTodoInListByDeadline, setTodoPlacement, setTodoPosition } from './Action_Creators/index';
 
 class App extends Component {
+
+  deleteTodo = (index) => {
+    this.props.deleteTodo(index);
+  }
+
+  editTodo = (index) => {
+    this.props.editTodo(index);
+  }
+
+  handleValueChange = (event, type) => {
+    this.props.changeCurrentValue(event.target.value, type);
+  }
+
+  handleSearch = (event) => {
+    event.preventDefault();
+    this.props.searchTodo(event.target.value);
+  }
+
+  handleSearchByDeadline = (event) => {
+    event.preventDefault();
+    this.props.searchByDeadline(event.target.value);
+  }
+
+  handleSearchTodo = (event) => {
+    event.preventDefault();
+    this.props.searchTodoInList();
+  }
+
+  handleSearchTodoByDeadline = (event) => {
+    event.preventDefault();
+    this.props.searchTodoInListByDeadline();
+  }
+
+  saveTodo = (event) => {
+    event.preventDefault();
+    this.props.addTodoToTodos();
+  }
+// b5f9d9gy
   render() {
     return (
       <div className="App">
-        <AddTodo />
-        <TodoList />
+
+        <AddTodo appState={this.props.appState}
+        handleValueChange={(event, type) => this.handleValueChange(event, type)}  
+        saveTodo={(event) => this.saveTodo(event)}
+        setTodoPosition={this.props.setTodoPosition}
+        setTodoPlacement={this.props.setTodoPlacement}/>
+
+        <SearchTodo appState={this.props.appState} 
+        handleSearch={(event) => this.props.searchTodo(event.target.value)} 
+        handleSearchTodo={(event) => this.handleSearchTodo(event)}
+        handleSearchTodoByDeadline={(event) => this.handleSearchTodoByDeadline(event)} 
+        handleSearchByDeadline={(event) => this.handleSearchByDeadline(event)}/>
+        
+        <TodoList appState={this.props.appState}
+        todos={this.props.appState.todos} 
+        editTodo={(index) => this.editTodo(index)} 
+        deleteTodo={(index) => this.deleteTodo(index)} 
+        toggleTodo={(index) => this.props.toggleTodo(index)}/>
+
+        <button onClick={() => console.log(this.props.appState)}>
+          Show State
+        </button>
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return ({
+    appState : state.appState
+  });
+}
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ changeCurrentValue, addTodoToTodos, editTodo, deleteTodo, toggleTodo, searchTodo, searchTodoInList, searchByDeadline, searchTodoInListByDeadline, setTodoPlacement, setTodoPosition }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 /*
 

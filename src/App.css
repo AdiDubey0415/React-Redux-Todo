@@ -22,6 +22,72 @@
   font-size: large;
 }
 
+.div-class {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+}
+
+.ul-class {
+  font-size: 1.25rem;
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.li-class {
+  padding: 0.75rem;
+  display: flex;
+  margin: 1rem 0;
+}
+
+.completed-class {
+  border: 2px solid green;
+}
+
+.incompleted-class {
+  border: 2px solid red;
+}
+
+.input-field-class {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  padding: 0.25rem;
+}
+
+.select-tag-class {
+  font-size: 1.5rem;
+  min-width: 100px;
+  margin-left: 1rem;
+}
+
+.submit-btn-class {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+.form-class {
+  display: flex;
+}
+
+.span-class {
+  font-size: 1.25rem;
+  padding-left: 1rem;
+}
+
+.delete-toggle-button-class {
+  margin-right: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.deadline-class {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
