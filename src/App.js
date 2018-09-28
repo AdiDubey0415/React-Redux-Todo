@@ -50,6 +50,10 @@ class App extends Component {
     return (
       <div className="App">
 
+        <header className="header-class">
+          Find what you're looking for...
+        </header>
+
         <AddTodo appState={this.props.appState}
         handleValueChange={(event, type) => this.handleValueChange(event, type)}  
         saveTodo={(event) => this.saveTodo(event)}
@@ -68,14 +72,16 @@ class App extends Component {
         deleteTodo={(index) => this.deleteTodo(index)} 
         toggleTodo={(index) => this.props.toggleTodo(index)}/>
 
-        <button onClick={() => console.log(this.props.appState)}>
-          Show State
-        </button>
 
       </div>
     );
   }
 }
+
+// <button onClick={() => console.log(this.props.appState)}>
+//   Show State
+// </button>
+
 
 const mapStateToProps = (state) => {
   return ({

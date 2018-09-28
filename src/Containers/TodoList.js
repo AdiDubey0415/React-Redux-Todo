@@ -43,7 +43,7 @@ export default class TodoList extends Component {
 
     render() {
         return (
-            <div className="div-class">
+            <div className="div-class todoList-div-class">
                 <span className="span-class">
                     Todo List
                 </span>
